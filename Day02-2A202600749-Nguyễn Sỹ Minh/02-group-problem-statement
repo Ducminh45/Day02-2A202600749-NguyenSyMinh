@@ -50,8 +50,43 @@ Case: **Trợ giảng quá tải khi lớp đông trong khóa AI thực chiến*
 ```text
 Pain không chỉ là thiếu trợ giảng, mà là nhiều câu hỏi lặp lại đang chiếm thời gian của trợ giảng, làm học viên phải chờ lâu khi bị kẹt trong quá trình học.
 ```
+## Research giải pháp
 
+Nhóm tìm các hướng đã có sẵn để tránh giả định rằng phải tự xây một agent lớn ngay từ đầu.
+
+| Nguồn / tool / case | Link | Họ giải quyết phần nào? | Điểm mạnh | Khoảng trống / rủi ro | Bài học cho nhóm |
+|---|---|---|---|---|---|
+| ChatGPT Edu | https://openai.com/index/introducing-chatgpt-edu/ | Hỗ trợ tutoring cá nhân hóa, hỗ trợ sinh viên/giảng viên và các tác vụ học thuật | Phù hợp làm lớp AI hỗ trợ hỏi đáp, giải thích bài, hướng dẫn học viên | Nếu không giới hạn theo tài liệu khóa học, AI có thể trả lời lệch nội dung hoặc thiếu kiểm chứng | Có thể dùng AI làm trợ giảng cấp 1, nhưng cần knowledge base và human review |
+| Slack AI | https://slack.com/help/articles/25076892548883-Guide-to-AI-features-in-Slack | Tóm tắt/search trong dữ liệu hội thoại nhóm | Tốt cho việc tìm lại câu trả lời cũ, recap thread, giảm câu hỏi bị trôi trong nhóm chat | Chỉ xử lý tốt phần dữ liệu trong Slack; không thay được mentor khi câu hỏi cần chuyên môn sâu | Dùng log nhóm chat để tạo FAQ và phát hiện câu hỏi lặp lại |
+| Gemini for Education / Google Classroom AI | https://edu.google.com/intl/ALL_vn/ai/gemini-for-education/ | Hỗ trợ giáo viên/sinh viên trong lập kế hoạch bài học, brainstorm, nghiên cứu, cá nhân hóa học tập | Phù hợp nếu khóa học dùng Google Workspace/Classroom | Không tự động giải quyết toàn bộ luồng escalation giữa AI và trợ giảng | AI nên tích hợp vào workflow học tập sẵn có, không tách rời khỏi LMS/tài liệu |
+| Khanmigo | https://www.khanmigo.ai/teachers | AI teaching assistant, hỗ trợ giáo viên chuẩn bị bài, rubric, quiz, feedback và hướng dẫn học viên | Pattern tốt: AI hỗ trợ giáo viên và học viên, không chỉ đưa đáp án trực tiếp | Nội dung gắn với hệ sinh thái Khan Academy, không khớp hoàn toàn khóa AI thực chiến của Vin | AI nên hướng dẫn học viên suy nghĩ và sửa lỗi, không chỉ trả đáp án nhanh |
+| FAQ / Knowledge Base nội bộ | Tự xây từ slide, bài giảng, deadline, hướng dẫn setup, câu hỏi lặp lại | Trả lời câu hỏi phổ biến như deadline, link tài liệu, lỗi setup, API key, cách nộp bài | Dễ triển khai, kiểm soát nguồn tốt, ít rủi ro hơn agent tự do | Không xử lý tốt câu hỏi mới, mơ hồ hoặc lỗi cá nhân hóa cao | Bắt đầu bằng Rule + Workflow trước khi nghĩ đến Agent |
 ---
+
+**Research takeaway:**
+
+```text
+Không nên bắt đầu bằng một Agent tự xử lý toàn bộ lớp học. Hướng hợp lý hơn là Workflow:
+1. Tạo knowledge base từ tài liệu khóa học và câu hỏi thật.
+2. AI trả lời câu hỏi phổ biến ngay lập tức.
+3. Câu hỏi khó hoặc nhạy cảm được chuyển cho trợ giảng/mentor.
+4. Trợ giảng cập nhật FAQ để hệ thống tốt dần.
+```
+
+**Non-AI alternative rút ra từ research:**
+
+- Ghim FAQ rõ hơn trong nhóm lớp.
+- Tạo template trả lời cho trợ giảng.
+- Tổ chức office hour cố định.
+- Chia nhóm nhỏ theo level học viên.
+- Tạo checklist setup môi trường trước buổi học.
+
+**Vì sao vẫn cần AI:**
+
+```text
+FAQ tĩnh giúp giảm một phần câu hỏi lặp lại, nhưng học viên thường hỏi cùng một vấn đề bằng nhiều cách khác nhau. AI có thể hiểu biến thể câu hỏi, tìm đúng mục trong tài liệu, trả lời theo ngữ cảnh khóa học và chỉ chuyển case khó cho trợ giảng.
+```
+
 
 # Workflow before/after
 
