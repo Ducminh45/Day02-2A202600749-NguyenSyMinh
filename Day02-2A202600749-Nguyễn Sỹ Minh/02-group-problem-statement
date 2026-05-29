@@ -1,0 +1,245 @@
+# 02 — Group Problem Statement
+
+Case: **Trợ giảng quá tải khi lớp đông trong khóa AI thực chiến**
+
+---
+
+## Group convergence
+
+| Cluster | Candidate examples | Pattern chung |
+|---|---|---|
+| Hỗ trợ học viên trong lớp đông | Không hiểu error log; học viên hỏi lại quy trình; lặp lại việc giải đáp lỗi; trợ giảng quá tải khi lớp đông; mentor trả lời câu hỏi lặp lại | Học viên cần hỗ trợ đúng lúc, còn trợ giảng/mentor bị quá tải bởi câu hỏi lặp lại. |
+| Giảm tải vận hành cho mentor | Khó theo dõi tiến độ học viên; Action Item Tracking; deadline reminder; tổng hợp feedback tốn thời gian | Mentor mất nhiều thời gian theo dõi, tổng hợp và nhắc việc thủ công. |
+| Feedback / Review bài tập | Feedback bài tập chậm và chưa cá nhân hóa; review assignment; AI review sơ bộ theo rubric | Học viên cần feedback nhanh, rõ và cá nhân hóa hơn để cải thiện bài làm. |
+| Tối ưu trải nghiệm học hybrid | Đi học xa; học offline 8 tiếng rồi học online khi mệt; AI hỗ trợ học hybrid | Học viên mất nhiều thời gian, chi phí và năng lượng khi tham gia học offline. |
+
+**Workflow được chọn:** Trợ giảng quá tải khi lớp đông.
+
+---
+
+## Shortlist và score
+
+| Candidate | Actor rõ | Workflow rõ | Pain có evidence | Impact đo được | Làm trong lab | So sánh R/W/A được | Nhóm hiểu domain | Tổng |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| Trợ giảng quá tải khi lớp đông | 5 | 5 | 4 | 5 | 5 | 5 | 5 | 34 |
+| Feedback bài tập chậm | 5 | 4 | 4 | 4 | 4 | 5 | 5 | 31 |
+| Đi học xa / học hybrid | 5 | 4 | 4 | 5 | 4 | 4 | 5 | 31 |
+
+**Nhóm chọn:** Trợ giảng quá tải khi lớp đông.
+
+**Vì sao chọn:**
+
+- Actor rõ: trợ giảng, mentor, học viên.
+- Workflow rõ: học viên hỏi → trợ giảng đọc → trả lời → học viên tiếp tục học.
+- Pain lặp lại nhiều: câu hỏi về lỗi setup, API key, deadline, bài tập, error log.
+- Impact dễ đo: số câu hỏi/ngày, thời gian phản hồi, tỷ lệ câu hỏi lặp lại.
+- AI có thể can thiệp đúng một bước: trả lời câu hỏi phổ biến trước khi chuyển cho người thật.
+
+---
+
+## Quick validation
+
+| Nguồn | Số người / số mẫu | Tín hiệu xác nhận | Tín hiệu phản bác | Nhóm sửa problem thế nào |
+|---|---:|---|---|---|
+| Hỏi nhanh học viên | 5 | 4/5 từng bị kẹt khi làm bài và phải chờ trợ giảng trả lời | 1 người nói tự search được bằng Google/ChatGPT | Thu hẹp vào câu hỏi liên quan trực tiếp tài liệu khóa học |
+| Hỏi trợ giảng/mentor | 2 | Câu hỏi về setup, deadline, lỗi API/key bị lặp lại nhiều | Một số câu hỏi cần mentor xử lý trực tiếp | Tách câu hỏi phổ biến cho AI, câu khó chuyển người thật |
+| Quan sát nhóm chat lớp | 1 nhóm | Nhiều câu hỏi giống nhau bị trôi tin nhắn | Chưa có log đủ dài để thống kê chính xác | Cần tạo FAQ/knowledge base từ câu hỏi thật |
+
+**Insight sau validation:**
+
+```text
+Pain không chỉ là thiếu trợ giảng, mà là nhiều câu hỏi lặp lại đang chiếm thời gian của trợ giảng, làm học viên phải chờ lâu khi bị kẹt trong quá trình học.
+```
+
+---
+
+# Workflow before/after
+
+## 1. Current workflow — ASCII flowchart
+
+```text
+CURRENT STATE — Trợ giảng xử lý thủ công
+
+[1 Học viên gặp lỗi / chưa hiểu bài]
+        |
+        v
+[2 Học viên gửi câu hỏi lên nhóm lớp]
+        |
+        v
+[3 Câu hỏi bị trôi hoặc trùng lặp]
+        |
+        v
+[4 Trợ giảng đọc và phân loại thủ công]  <-- Bottleneck
+        |
+        v
+[5 Trợ giảng trả lời từng câu]           <-- Bottleneck
+        |
+        v
+[6 Học viên tiếp tục làm bài]
+```
+
+## 2. Future workflow — ASCII flowchart
+
+```text
+FUTURE STATE — AI trợ giảng + human escalation
+
+[1 Học viên đặt câu hỏi]
+        |
+        v
+[2 AI tra tài liệu khóa học / FAQ / bài giảng]
+        |
+        v
+[3 AI trả lời câu hỏi phổ biến ngay lập tức]
+        |
+        v
+[4 Nếu câu hỏi khó, AI chuyển cho trợ giảng]  <-- Human boundary
+        |
+        v
+[5 Trợ giảng xử lý case phức tạp]
+        |
+        v
+[6 Câu hỏi mới được cập nhật vào FAQ]
+```
+
+---
+
+# Mermaid flowchart
+
+## 1. Current workflow — Mermaid
+
+```mermaid
+flowchart TD
+    A[1 Học viên gặp lỗi / chưa hiểu bài]
+    B[2 Học viên gửi câu hỏi lên nhóm lớp]
+    C[3 Câu hỏi bị trôi hoặc trùng lặp]
+    D[4 Trợ giảng đọc và phân loại thủ công]
+    E[5 Trợ giảng trả lời từng câu]
+    F[6 Học viên tiếp tục làm bài]
+
+    A --> B --> C --> D --> E --> F
+
+    D:::pain
+    E:::pain
+
+    classDef pain fill:#ffe5e5,stroke:#cc0000,stroke-width:2px,color:#000;
+```
+
+## 2. Future workflow — Mermaid
+
+```mermaid
+flowchart TD
+    A[1 Học viên đặt câu hỏi]
+    B[2 AI tra tài liệu khóa học / FAQ / bài giảng]
+    C[3 AI trả lời câu hỏi phổ biến ngay lập tức]
+    D[4 Nếu câu hỏi khó, AI chuyển cho trợ giảng]
+    E[5 Trợ giảng xử lý case phức tạp]
+    F[6 Câu hỏi mới được cập nhật vào FAQ]
+
+    A --> B --> C --> D --> E --> F
+
+    B:::ai
+    C:::ai
+    D:::human
+    E:::human
+    F:::improve
+
+    classDef ai fill:#e8f7ed,stroke:#1f8f4d,stroke-width:2px,color:#000;
+    classDef human fill:#fff6d6,stroke:#d89b00,stroke-width:2px,color:#000;
+    classDef improve fill:#e8f0ff,stroke:#3366cc,stroke-width:2px,color:#000;
+```
+
+---
+
+## Before/after impact
+
+| Metric | Trước | Sau kỳ vọng | Ghi chú |
+|---|---:|---:|---|
+| Thời gian phản hồi câu hỏi phổ biến | 12–24 giờ | Dưới 5 phút | AI trả lời FAQ / câu hỏi lặp lại |
+| Tỷ lệ câu hỏi cần trợ giảng xử lý | 100% | 30–50% | AI xử lý phần đơn giản |
+| Số câu hỏi lặp lại trong nhóm chat | Cao | Giảm 50% | Có FAQ + AI trả lời tự động |
+| Mức độ hài lòng học viên | 3/5 | 4+/5 | Học viên được hỗ trợ nhanh hơn |
+| Bottleneck chính | Trợ giảng trả lời thủ công | Trợ giảng xử lý câu khó | Bottleneck mới chấp nhận được |
+
+---
+
+## Problem Statement v0
+
+| Field | Nội dung |
+|---|---|
+| **Actor** | Trợ giảng khóa AI thực chiến và học viên cần hỗ trợ trong lớp đông. |
+| **Workflow** | Học viên gặp lỗi hoặc chưa hiểu bài → gửi câu hỏi lên nhóm lớp → trợ giảng đọc → trả lời thủ công → học viên tiếp tục làm bài. |
+| **Bottleneck** | Trợ giảng phải xử lý nhiều câu hỏi lặp lại về setup, deadline, bài tập, lỗi API/key và error log. |
+| **Impact** | Học viên phải chờ lâu, dễ bị kẹt khi làm bài; trợ giảng mất nhiều thời gian cho câu hỏi đơn giản thay vì hỗ trợ case khó. |
+| **Success Metric** | Giảm thời gian phản hồi câu hỏi phổ biến xuống dưới 5 phút; giảm ít nhất 50% câu hỏi lặp lại cần trợ giảng trả lời thủ công. |
+| **Boundary** | AI không xử lý khiếu nại điểm số, không quyết định pass/fail, không trả lời ngoài phạm vi tài liệu khóa học. |
+
+---
+
+## Rule / Workflow / Agent
+
+| Mức | Phương án | Khi nào đủ | Rủi ro | Chọn? |
+|---|---|---|---|---|
+| **Rule** | Tạo FAQ cố định, template trả lời, ghim tài liệu trên nhóm lớp | Đủ nếu câu hỏi rất ít và lặp lại hoàn toàn giống nhau | Học viên vẫn phải tự tìm; không hiểu câu hỏi biến thể | Không chọn làm toàn bộ, nhưng dùng làm nền |
+| **Workflow** | Học viên hỏi → AI tra FAQ/tài liệu → AI trả lời → câu khó chuyển trợ giảng | Hợp vì luồng xử lý khá rõ, có boundary người thật | AI trả lời sai hoặc thiếu ngữ cảnh | **Chọn** |
+| **Agent** | Agent tự phân tích lỗi, hỏi thêm thông tin, gọi tool kiểm tra bài/code, tạo ticket cho mentor | Chỉ cần nếu bài toán nhiều nhánh và cần tự quyết bước tiếp theo | Quá rộng, rủi ro cao, cần nhiều quyền truy cập | Chưa chọn |
+
+**Mức chọn:**
+
+```text
+Workflow
+```
+
+**Vì sao:**
+
+- Câu hỏi lớp học có luồng xử lý khá rõ.
+- AI chỉ cần hỗ trợ bước trả lời câu hỏi phổ biến.
+- Trợ giảng vẫn giữ vai trò kiểm soát câu hỏi khó.
+- Chưa cần Agent vì chưa cần AI tự lập kế hoạch phức tạp.
+
+---
+
+## Problem Statement v1
+
+| Field | Nội dung |
+|---|---|
+| **Actor** | Trợ giảng và học viên trong lớp AI thực chiến quy mô lớn. |
+| **Workflow** | Học viên gặp lỗi/chưa hiểu bài → gửi câu hỏi → AI kiểm tra FAQ/tài liệu → trả lời câu phổ biến → chuyển câu khó cho trợ giảng. |
+| **Bottleneck** | Trợ giảng bị quá tải do phải trả lời thủ công nhiều câu hỏi lặp lại, làm thời gian phản hồi kéo dài. |
+| **Impact** | Học viên bị kẹt khi học/làm bài; trợ giảng mất thời gian cho câu hỏi đơn giản; chất lượng hỗ trợ giảm khi lớp đông. |
+| **Success Metric** | Thời gian phản hồi câu hỏi phổ biến dưới 5 phút; giảm 50% câu hỏi lặp lại cần trợ giảng xử lý; mức hài lòng hỗ trợ đạt 4/5 trở lên. |
+| **Boundary** | AI không chấm điểm cuối, không xử lý khiếu nại, không trả lời ngoài tài liệu khóa học, không thay mentor ở case phức tạp. |
+| **AI intervention point** | Ngay sau khi học viên gửi câu hỏi, trước khi chuyển đến trợ giảng. |
+| **Mức chọn** | Workflow: AI trả lời FAQ/câu hỏi phổ biến, trợ giảng xử lý câu khó. |
+| **Rủi ro & người thật kiểm tra** | Rủi ro: AI trả lời sai, hiểu sai lỗi kỹ thuật, dùng thông tin cũ. HITL: trợ giảng duyệt FAQ, kiểm tra log trả lời, xử lý escalation. |
+
+---
+
+## Final decision
+
+**Decision:**
+
+```text
+Go với scope nhỏ.
+```
+
+**Pilot nhỏ nhất:**
+
+- Thu thập 30–50 câu hỏi lặp lại từ lớp học.
+- Tạo FAQ/knowledge base từ slide, bài giảng, deadline, hướng dẫn setup.
+- Cho học viên hỏi AI trong 1–2 tuần.
+- Câu hỏi AI không chắc chắn sẽ chuyển cho trợ giảng.
+- Đo thời gian phản hồi, số câu hỏi được AI xử lý và mức hài lòng học viên.
+
+**Exit / rollback:**
+
+- Nếu AI trả lời sai nhiều hơn 10% câu hỏi phổ biến → tạm dừng, cập nhật lại FAQ.
+- Nếu học viên vẫn phải hỏi lại trợ giảng sau hơn 50% câu trả lời của AI → giảm scope, chỉ dùng AI cho FAQ đơn giản.
+- Nếu câu hỏi liên quan điểm số/project cá nhân → luôn chuyển người thật.
+
+**Decision rationale:**
+
+- Problem rõ, actor rõ, workflow rõ.
+- Có metric đo được.
+- AI can thiệp vào một bước cụ thể.
+- Có boundary và người thật kiểm tra.
+- Không cần Agent ngay từ đầu; Workflow là mức phù hợp nhất.

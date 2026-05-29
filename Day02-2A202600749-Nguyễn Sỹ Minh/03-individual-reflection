@@ -1,0 +1,79 @@
+#  Individual Reflection
+---
+
+## 1. Tôi đã tham gia vào phần nào?
+
+Điền bảng này để chứng minh bạn có đóng góp thật vào quá trình làm nhóm.
+
+| Hoạt động | Tôi đã làm gì? | Kết quả / ảnh hưởng |
+|---|---|---|
+| Scan cá nhân | Đưa ra các problem như đi học xa, trợ giảng quá tải, feedback bài tập chậm | Nhóm có thêm candidate cụ thể để thảo luận |
+| Pitch Problem Card | Trình bày problem “đi học xa khi học khóa AI thực chiến” | Problem được nhóm cân nhắc/chọn để phát triển |
+| Challenge bài của bạn khác | Hỏi lại actor, bottleneck, metric và mức độ đo được của problem khác | Giúp nhóm loại các ý quá rộng hoặc chưa rõ workflow |
+| Gom trùng / cluster | Góp ý gom các problem liên quan đến học tập, hỗ trợ học viên và feedback | Nhóm nhìn thấy pattern chung rõ hơn |
+| Chọn candidate problem | Đề xuất ưu tiên problem có metric rõ và dễ kiểm chứng | Nhóm chọn được problem phù hợp với thời gian lab |
+| Validation / research | Đề xuất khảo sát nhanh về thời gian đi lại, chi phí và mức độ mệt mỏi | Giúp problem có evidence cụ thể hơn |
+| Workflow nhóm | Vẽ current workflow và future workflow cho case học AI thực chiến | Nhóm thấy rõ bottleneck và điểm AI có thể can thiệp |
+| Problem Statement | Góp phần viết Actor, Workflow, Bottleneck, Impact, Success Metric, Boundary | Problem Statement rõ hơn và dễ đánh giá hơn |
+| Rule / Workflow / Agent | Đề xuất chọn Workflow thay vì Agent | Giúp scope hợp lý, tránh làm giải pháp quá phức tạp |
+| Decision | Ủng hộ quyết định Go với scope nhỏ | Nhóm có hướng pilot rõ ràng hơn |
+
+---
+
+## 2. Bảng dùng AI trong reflection
+
+Mục này không phải để chứng minh dùng AI nhiều, mà để cho thấy bạn dùng AI có kiểm soát.
+
+| Phase | Tôi dùng AI để làm gì? | AI hữu ích ở đâu? | AI sai/hời hợt ở đâu? | Tôi sửa gì bằng nhận định của mình? |
+|---|---|---|---|---|
+| Scan | Gợi ý thêm problem theo bối cảnh học khóa AI thực chiến | Giúp mở rộng góc nhìn như trợ giảng quá tải, feedback chậm, học viên quên bài | Một số ý quá chung chung, chưa có actor rõ | Chỉ giữ các problem có trải nghiệm thật và đo được |
+| Problem Card | Nhờ AI phản biện Actor, Workflow, Bottleneck, Metric | Giúp nhận ra cần viết rõ hơn về thời gian đi lại, chi phí và mệt mỏi | AI có xu hướng đề xuất giải pháp nhanh thay vì đào sâu problem | Tôi thu hẹp lại problem “đi học xa” và giữ metric cụ thể |
+| Workflow | Nhờ AI vẽ workflow dạng ASCII/Mermaid | Giúp workflow dễ đọc, dễ đưa vào bài nộp | AI đôi khi làm đẹp nhưng chưa nhấn mạnh bottleneck | Tôi tự đánh dấu bước di chuyển là pain point chính |
+| Research | Nhờ AI gợi ý hướng giải pháp hybrid + AI trợ giảng | Giúp thấy có thể kết hợp online, offline, AI feedback, mentor review | Một số claim về hiệu quả chưa có nguồn kiểm chứng | Tôi không dùng số liệu chưa kiểm chứng, chỉ giữ logic giải pháp |
+| Problem Statement | Nhờ AI kiểm tra field còn mơ hồ | Giúp phát hiện metric và boundary cần rõ hơn | AI có thể viết lại quá trơn tru nhưng không phản ánh trải nghiệm thật | Tôi tự chỉnh lại theo case lớp học AI thực chiến |
+| Rule / Workflow / Agent | Nhờ AI so sánh Rule, Workflow, Agent | Giúp tránh chọn Agent quá sớm | AI có xu hướng đề xuất hệ thống lớn hơn cần thiết | Tôi chọn Workflow vì các bước khá rõ và cần con người review |
+| Decision | Nhờ AI phản biện Go / Not Yet / No-Go | Giúp nghĩ thêm về pilot nhỏ và rủi ro AI trả lời sai | AI chưa biết đủ bối cảnh lớp học thật | Tôi đề xuất Go với scope nhỏ, có mentor/trợ giảng kiểm tra |
+
+---
+
+## 3. Reflection câu hỏi mở
+
+### Tôi học được gì khi nghe top 3 problems của các bạn khác?
+
+Tôi học được rằng một problem tốt không nhất thiết phải là problem nghe “AI” nhất. Problem tốt cần có actor rõ, workflow vẽ được, bottleneck cụ thể và metric đo được. Khi nghe các bạn trình bày, tôi thấy nhiều ý tưởng ban đầu khá hay nhưng còn rộng, chưa biết ai là người đau nhất hoặc chưa đo được tác động.
+
+### Nhóm có lúc nào bị solution-first không?
+
+Có. Ban đầu nhóm dễ nghĩ ngay đến việc xây chatbot hoặc AI agent cho lớp học. Sau khi quay lại workflow, nhóm nhận ra cần bắt đầu từ điểm đau cụ thể: học viên mất nhiều thời gian đi học xa, trợ giảng quá tải, feedback bài tập chậm. Từ đó, nhóm mới chọn AI can thiệp vào đúng bước thay vì đưa AI vào toàn bộ hệ thống.
+
+### Tôi có thay đổi ý kiến sau khi bị challenge không?
+
+Có. Ban đầu tôi nghĩ problem “trợ giảng quá tải” có thể là quan trọng nhất. Nhưng sau khi bị challenge về metric và dữ liệu thực tế, tôi nhận ra problem “đi học xa” dễ đo hơn bằng thời gian, chi phí, tỷ lệ đi học đúng giờ và mức độ mệt mỏi. Vì vậy, tôi đồng ý chọn “đi học xa” làm Problem Card #1.
+
+### Tôi đóng góp gì thật sự vào artifact cuối?
+
+Tôi đóng góp case học khóa AI thực chiến do tập đoàn Vin tổ chức, viết Top 3 Problem Cards, xây Problem Card theo form Actor / Workflow / Bottleneck / Impact / Success Metric / Boundary / AI intervention point / Mức chọn / Rủi ro & HITL. Tôi cũng vẽ lại current workflow và future workflow để làm rõ sự khác biệt giữa trạng thái hiện tại và giải pháp hybrid + AI trợ giảng.
+
+### Điều khó nhất khi viết Problem Statement là gì?
+
+Điều khó nhất là viết metric đủ cụ thể. Nếu chỉ nói “học viên mệt” hoặc “đi học xa bất tiện” thì còn cảm tính. Cần chuyển thành số đo như thời gian đi lại mỗi buổi, tổng giờ đi lại mỗi tháng, chi phí đi lại, tỷ lệ đi học đúng giờ, tỷ lệ hoàn thành bài tập và mức độ hài lòng.
+
+### Nếu làm lại, tôi sẽ challenge nhóm mạnh hơn ở điểm nào?
+
+Nếu làm lại, tôi sẽ challenge nhóm mạnh hơn ở phần validation. Tôi sẽ hỏi: có bao nhiêu học viên thật sự mất hơn 60–90 phút di chuyển, chi phí đi lại trung bình là bao nhiêu, tỷ lệ nghỉ học hoặc đi muộn có liên quan đến khoảng cách không. Như vậy problem sẽ có evidence chắc hơn trước khi chọn giải pháp.
+
+---
+
+## 4. Reflection bản hoàn chỉnh có thể nộp
+
+```text
+Trong Phase 7, tôi nhìn lại vai trò của mình trong nhóm và nhận ra rằng đóng góp quan trọng nhất của tôi là đưa ra case học khóa AI thực chiến do tập đoàn Vin tổ chức, sau đó phát triển problem “đi học xa sau giờ làm” thành một Problem Card có actor, workflow, bottleneck và metric rõ ràng.
+
+Tôi đã tham gia vào phần scan cá nhân, pitch Problem Card, challenge một số problem khác, vẽ workflow hiện tại/tương lai và cùng nhóm thảo luận chọn mức Workflow thay vì Agent. Ban đầu tôi nghĩ AI agent có thể giải quyết nhiều việc hơn, nhưng sau khi phân tích workflow, tôi thấy bài toán chưa cần agent phức tạp. Hướng hợp lý hơn là hybrid learning kết hợp AI trợ giảng, AI feedback sơ bộ và mentor review các phần khó.
+
+Tôi có dùng AI để gợi ý thêm problem, phản biện Problem Card, vẽ workflow ASCII/Mermaid và kiểm tra Rule / Workflow / Agent. AI hữu ích ở chỗ giúp tôi hệ thống hóa ý tưởng nhanh hơn. Tuy nhiên, AI cũng có lúc đưa ý quá rộng hoặc nhảy sang solution quá sớm. Vì vậy tôi phải tự sửa lại bằng trải nghiệm thật: tập trung vào học viên đi làm, thời gian di chuyển, chi phí đi lại, tỷ lệ đi học đúng giờ và tỷ lệ hoàn thành bài tập.
+
+Điều tôi học được là problem tốt không phải problem nghe “AI” nhất, mà là problem có workflow rõ và đo được impact. Nếu làm lại, tôi sẽ validate sớm hơn bằng khảo sát nhanh với học viên, ví dụ hỏi thời gian đi lại mỗi buổi, chi phí mỗi tháng và mức độ mệt sau khi học. Điều này sẽ giúp nhóm có baseline chắc hơn trước khi quyết định Go / Not Yet / No-Go.
+```
+
+---

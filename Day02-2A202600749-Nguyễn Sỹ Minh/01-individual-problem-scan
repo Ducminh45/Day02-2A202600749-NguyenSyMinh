@@ -1,0 +1,219 @@
+# 01 — Individual Problem Scan
+
+## Case ví dụ: Đi học khóa AI thực chiến do tập đoàn Vin tổ chức
+
+**Nhân vật:** Minh, nhân viên văn phòng tại Hà Nội, đăng ký khóa **AI thực chiến** do tập đoàn Vin tổ chức để nâng cấp kỹ năng ứng dụng AI trong công việc.
+
+---
+
+## Scan rộng
+
+| # | Lăng kính | Problem quan sát được | Ai đang đau? | Dấu hiệu thật |
+|---|---|---|---|---|
+| 1 | Tốn thời gian | Đi học xa          | Học viên | Mất 90 phút di chuyển/ngày học |
+| 2 | Lặp lại | Học viên hỏi lại kiến thức cũ nhiều lần | Trợ giảng | Nhiều câu hỏi giống nhau trên nhóm lớp |
+| 3 | Tốn thời gian | Không kịp làm bài tập sau buổi học | Học viên | Bài nộp muộn, chất lượng thấp |
+| 4 | AI có thể tốt hơn | Không có trợ giảng trả lời ngay ngoài giờ | Học viên | Phải chờ 12–24 giờ mới được giải đáp |
+| 5 | Pain từ người khác | Trợ giảng quá tải khi lớp đông | Trợ giảng | 1 trợ giảng hỗ trợ hàng chục/hàng trăm học viên |
+| 6 | Lặp lại | Học viên quên nội dung đã học | Học viên | Phải xem lại slide/video nhiều lần |
+| 7 | Tốn thời gian | Giảng viên khó biết ai đang bị tụt lại | Giảng viên | Không có dashboard theo dõi tiến độ |
+| 8 | AI có thể tốt hơn | Feedback bài tập chưa cá nhân hóa | Học viên | Nhận feedback chung chung |
+| 9 | Tốn thời gian | Học viên mất nhiều thời gian setup công cụ AI | Học viên | Lỗi API key, môi trường, prompt |
+| 10 | Lặp lại | Câu hỏi về deadline, tài liệu, link học lặp lại | Trợ giảng | Nhóm chat bị trôi thông tin |
+
+---
+
+## Top 3 Problems
+
+| Rank | Problem | Vì sao chọn | Điều còn chưa chắc |
+|---|---|---|---|
+| 1 | Đi học xa sau giờ làm | Pain rõ, đo được bằng thời gian, chi phí, mệt mỏi | Cần khảo sát tỷ lệ học viên ở xa |
+| 2 | Trợ giảng quá tải khi lớp đông | Lớp đông, nhiều câu hỏi lặp lại, ảnh hưởng SLA hỗ trợ | Cần thống kê số câu hỏi/ngày |
+| 3 | Feedback bài tập chậm và chưa cá nhân hóa | Ảnh hưởng trực tiếp đến chất lượng học tập | Khó đo chất lượng feedback hơn thời gian/chi phí |
+
+---
+
+# Problem Card #1 — Đi học xa 
+
+| Field | Nội dung |
+|---|---|
+| **Actor** | Học viên đi làm tham gia khóa AI thực chiến do tập đoàn Vin tổ chức. |
+| **Workflow** | Dậy → di chuyển đến địa điểm học → học offline 8 tiếng → di chuyển về nhà → học online khi đã mệt. |
+| **Bottleneck** | Bước di chuyển trước và sau buổi học mất nhiều thời gian, dễ gây trễ giờ và mệt mỏi. |
+| **Impact** | Mỗi học viên mất khoảng 90 phút đi lại/ngày học; nếu học 8 buổi/tháng thì mất khoảng 12 giờ/tháng. Chi phí đi lại khoảng 800k–1.2 triệu VNĐ/tháng. |
+| **Success Metric** | Giảm thời gian đi lại từ 12 giờ/tháng xuống dưới 3 giờ/tháng; tăng tỷ lệ đi học đúng giờ lên trên 90%; giữ tỷ lệ hoàn thành bài tập trên 80%. |
+| **Boundary** | AI không thay giảng viên, không tự chấm điểm cuối cùng, không bịa nội dung ngoài tài liệu khóa học. |
+| **Điểm AI can thiệp** | AI hỗ trợ học hybrid: tóm tắt bài học, trả lời câu hỏi 24/7, gợi ý sửa bài tập, nhắc deadline, cá nhân hóa phần ôn tập. |
+| **Mức chọn** | **Workflow** — kết hợp học hybrid, AI trợ giảng và mentor review các phần quan trọng. |
+| **Rủi ro & HITL** | Rủi ro: AI trả lời sai hoặc hướng dẫn chưa đúng bối cảnh bài học. HITL: giảng viên/mentor kiểm duyệt tài liệu nguồn, review các câu hỏi khó và bài project quan trọng. |
+
+---
+
+# Problem Card #2 — Trợ giảng quá tải khi lớp đông
+
+| Field | Nội dung |
+|---|---|
+| **Actor** | Trợ giảng khóa AI thực chiến và học viên cần được hỗ trợ nhanh. |
+| **Workflow** | Học viên gặp lỗi hoặc chưa hiểu bài → gửi câu hỏi lên nhóm lớp → trợ giảng đọc từng câu → trả lời thủ công → học viên tiếp tục làm bài. |
+| **Bottleneck** | Trợ giảng phải xử lý nhiều câu hỏi lặp lại về bài học, bài tập, deadline, setup môi trường và lỗi API/key. |
+| **Impact** | Thời gian phản hồi có thể kéo dài 12–24 giờ; học viên bị kẹt khi làm bài; trợ giảng mất nhiều thời gian cho câu hỏi đơn giản thay vì hỗ trợ case khó. |
+| **Success Metric** | Giảm thời gian phản hồi câu hỏi phổ biến xuống dưới 5 phút; giảm ít nhất 50% số câu hỏi lặp lại cần trợ giảng trả lời thủ công. |
+| **Boundary** | AI không xử lý khiếu nại điểm số, không quyết định pass/fail, không trả lời ngoài phạm vi tài liệu khóa học. |
+| **Điểm AI can thiệp** | AI trợ giảng trả lời FAQ, hướng dẫn setup, giải thích lại bài, gợi ý tài liệu liên quan và chuyển câu hỏi khó cho trợ giảng thật. |
+| **Mức chọn** | **Workflow / Agent nhẹ** — AI xử lý câu hỏi phổ biến, con người xử lý câu hỏi phức tạp. |
+| **Rủi ro & HITL** | Rủi ro: AI hiểu sai câu hỏi kỹ thuật hoặc đưa hướng dẫn lỗi. HITL: trợ giảng duyệt bộ FAQ, theo dõi log câu trả lời, can thiệp khi AI không chắc chắn. |
+
+---
+
+# Problem Card #3 — Feedback bài tập chậm và chưa cá nhân hóa
+
+| Field | Nội dung |
+|---|---|
+| **Actor** | Học viên làm bài tập AI thực chiến và trợ giảng/mentor phụ trách review bài. |
+| **Workflow** | Học viên nộp bài → trợ giảng tải/xem bài → kiểm tra theo rubric → viết feedback → học viên sửa bài hoặc nộp lại. |
+| **Bottleneck** | Trợ giảng không đủ thời gian review chi tiết từng bài, đặc biệt khi lớp có số lượng học viên lớn. |
+| **Impact** | Học viên nhận feedback chậm hoặc chung chung, không biết rõ mình sai ở đâu, dẫn đến chậm cải thiện kỹ năng và giảm động lực học. |
+| **Success Metric** | Giảm thời gian nhận feedback sơ bộ từ vài ngày xuống dưới 1 giờ; tăng tỷ lệ hoàn thành bài tập lên trên 80%; điểm hài lòng feedback đạt 4/5 trở lên. |
+| **Boundary** | AI không chấm điểm cuối cùng, không thay mentor đánh giá project, không đưa feedback ngoài rubric chính thức. |
+| **Điểm AI can thiệp** | AI review sơ bộ bài tập theo rubric, chỉ ra lỗi phổ biến, gợi ý cải thiện và đánh dấu bài cần mentor xem kỹ. |
+| **Mức chọn** | **Workflow** — AI feedback sơ bộ, mentor/trợ giảng review các bài quan trọng hoặc bất thường. |
+| **Rủi ro & HITL** | Rủi ro: AI feedback sai, bỏ sót lỗi hoặc đánh giá không công bằng. HITL: mentor duyệt rubric, kiểm tra bài điểm thấp/bất thường và quyết định điểm cuối. |
+
+---
+
+## Problem Card #1 — Đi học xa khi học khóa AI thực chiến
+
+**Problem 1 câu:**  
+Học viên mất nhiều thời gian và năng lượng để di chuyển đến lớp AI thực chiến, làm giảm tỷ lệ tham gia đầy đủ và chất lượng học tập.
+
+**Actor:**  
+Học viên đi làm đăng ký khóa AI thực chiến do tập đoàn Vin tổ chức.
+
+**Thời điểm / bối cảnh:**  
+Sau khi thức dậy, học viên phải di chuyển từ nhà đến địa điểm học offline.
+
+**Current workflow:**
+
+```text
+1. Thức dậy
+2. Di chuyển đến địa điểm học
+3. Vào lớp muộn hoặc sát giờ
+4. Học 8-9 tiếng
+5. Di chuyển về nhà
+6. Học Online,làm bài tập hoặc xem lại nội dung
+```
+
+**Bottleneck:**  
+Bước 2 và 5 — thời gian di chuyển quá dài, đặc biệt sau giờ làm.
+
+**Impact:**  
+Mỗi học viên mất khoảng 90 phút đi lại/ngày học. Nếu học 8 buổi/tháng, mất khoảng 12 giờ/tháng chỉ cho việc di chuyển.
+
+**Success metric:**  
+Giảm thời gian di chuyển trung bình từ 12 giờ/tháng xuống dưới 3 giờ/tháng, đồng thời giữ tỷ lệ hoàn thành bài tập trên 80%.
+
+**Non-AI alternative:**  
+Tổ chức lớp gần hơn, học hybrid, gom lịch học vào cuối tuần.
+
+**AI hypothesis:**  
+Dùng AI trợ giảng + học hybrid để học viên có thể học online một phần, hỏi đáp 24/7 và xem lại nội dung cá nhân hóa.
+
+**Quick gut:**  
+Workflow.
+
+---
+
+## Draft current workflow
+
+```text
+CURRENT STATE — 1 buổi học offline mất nhiều thời gian di chuyển
+
+[1 Thức dậy]
+      |
+      v
+[2 Di chuyển đến lớp: 90']   <-- Pain point
+      |
+      v
+[3 Học offline: 8 tiếng]
+      |
+      v
+[4 Di chuyển về nhà: 90']    <-- Pain point
+      |
+      v
+[5 Học online khi đã mệt]
+```
+
+---
+
+## Draft future workflow
+
+```text
+FUTURE STATE — Hybrid + AI trợ giảng
+
+[1 Học online phần lý thuyết]
+      |
+      v
+[2 AI trợ giảng trả lời câu hỏi 24/7]
+      |
+      v
+[3 Làm bài tập có AI feedback sơ bộ]
+      |
+      v
+[4 Chỉ đến offline cho workshop/project quan trọng]
+      |
+      v
+[5 Mentor review phần khó]
+```
+
+---
+
+## Measurement
+
+| Metric | Trước | Sau kỳ vọng |
+|---|---:|---:|
+| Thời gian đi lại/tháng | 12 giờ | Dưới 3 giờ |
+| Chi phí đi lại/tháng | 800k–1.2 triệu VNĐ | Giảm 70% |
+| Tỷ lệ đi học đúng giờ | 70% | Trên 90% |
+| Tỷ lệ hoàn thành bài tập | 60–70% | Trên 80% |
+| Mức hài lòng học viên | 3/5 | 4+/5 |
+
+---
+
+## AI intervention point
+
+AI không thay giảng viên, mà hỗ trợ ở các điểm:
+
+```text
+Sau buổi học:
+- Tóm tắt bài học
+- Trả lời câu hỏi lặp lại
+- Gợi ý sửa bài tập
+- Nhắc deadline
+- Cá nhân hóa nội dung ôn tập
+```
+
+---
+
+## Boundary
+
+AI không:
+
+- Tự chấm điểm cuối cùng
+- Thay mentor đánh giá project
+- Bịa kiến thức ngoài tài liệu khóa học
+- Tư vấn sai nội dung kỹ thuật chưa được kiểm chứng
+
+---
+
+## Kết luận chọn problem
+
+```text
+Go với problem: Đi học xa làm giảm hiệu quả học khóa AI thực chiến.
+```
+
+## Problem Cards #2 và #3 — tóm tắt
+
+| Card | Actor | Bottleneck | Metric | Quick gut | Vì sao chưa chọn làm #1 |
+|---|---|---|---|---|---|
+| **#2 — Trợ giảng quá tải khi lớp đông** | Trợ giảng khóa AI thực chiến | Nhiều học viên hỏi câu giống nhau về bài học, bài tập, deadline, lỗi setup | Số câu hỏi/ngày; thời gian phản hồi trung bình; % câu hỏi lặp lại | **Workflow / Agent nhẹ** | Pain lớn nhưng phụ thuộc vào dữ liệu hỏi đáp thực tế của lớp |
+| **#3 — Feedback bài tập chậm và chưa cá nhân hóa** | Học viên làm bài tập AI thực chiến | Trợ giảng không đủ thời gian review chi tiết từng bài | Thời gian nhận feedback; % bài được feedback; điểm hài lòng học viên | **Workflow** | Tác động học tập cao nhưng khó đo chất lượng feedback hơn thời gian đi học xa |
